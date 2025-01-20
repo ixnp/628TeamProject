@@ -1,13 +1,13 @@
 import logo from './logo.svg';
 import './App.css';
-import Form from './Task';
+import TaskForm from './Task';
 
 function App() {
   return (
     <div>
       <h1>628 Group Project - Untitled</h1>
       <CreateNewTaskButton/>
-      <Form/>
+      <TaskForm/>
     </div>
   )
 }
@@ -16,7 +16,7 @@ function CreateNewTaskButton () {
 
   function handleClick() {
     return (
-      <Form/>
+      <TaskForm/>
     );
   }
   
