@@ -1,8 +1,11 @@
 import logo from './logo.svg';
 import './App.css';
-import TaskForm from './Task';
+import TaskForm from './pages/CreateTaskPage';
+import React, {useState} from "react";
 
 function App() {
+  const [text, setText] = useState('Initial Text');
+  
   return (
     <div>
       <h1>628 Group Project - Untitled</h1>
