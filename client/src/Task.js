@@ -1,7 +1,12 @@
-import {useState} from React
+import {useState} from 'react'
 
 function Form () {
-    return {
-        <h1>Create New Task</h1>
-    }
+
+    return (
+        <div>
+            <h1>Create New Task</h1>
+        </div>
+    );
 }
+
+export default Form
