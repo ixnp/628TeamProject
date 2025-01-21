@@ -11,45 +11,13 @@ function TaskForm () {
       }
     
       const handleSubmit = (event) => {
+        // TODO: Data validation.
         // TODO: Add Task to Database.
       }
     
       return (
         <form onSubmit={handleSubmit}>
-            <div>
-                <h1>Create New Task</h1>
-                <label>Task Name:
-                <input  className="create-task-input"
-                        type="text" 
-                        name="taskName" 
-                        maxLength="16"
-                        value={inputs.taskName || ""} 
-                        onChange={handleChange}
-                />
-                </label>
-            </div>
 
-            <div>
-                <label>Due Date:
-                <input  className="create-task-input"
-                        type="date" 
-                        name="dueDate" 
-                        value={inputs.dueDate || ""} 
-                        onChange={handleChange}
-                />
-                </label>
-            </div>
-
-            <div>
-                <label>Time:
-                <input  className="create-task-input"
-                        type="time" 
-                        name="dueTime" 
-                        value={inputs.dueTime || ""} 
-                        onChange={handleChange}
-                />
-                </label>
-            </div>
 
             <div>
                 <label>Priority:
@@ -94,6 +62,44 @@ function TaskForm () {
             <div>
                 <input type="submit" />
             </div>
+
+            <div class="wrapper">
+                <div class="one">
+                    <label>Task Name:</label>
+                </div>
+                <div class="two">
+                    <input  className="create-task-input"
+                            type="text" 
+                            name="taskName" 
+                            maxLength="16"
+                            value={inputs.taskName || ""} 
+                            onChange={handleChange}
+                    />
+                </div>
+                <div class="three">
+                    <label>Due Date:</label>
+                </div>
+                <div class="four">
+                    <input  className="create-task-input"
+                        type="date" 
+                        name="dueDate" 
+                        value={inputs.dueDate || ""} 
+                        onChange={handleChange}
+                    />
+                </div>
+                <div class="five">
+                    <label>Due Time:</label>
+                </div>
+                <div class="six">
+                    <input  className="create-task-input"
+                            type="time" 
+                            name="dueTime" 
+                            value={inputs.dueTime || ""} 
+                            onChange={handleChange}
+                    />
+                </div>
+            </div>
+
         </form>
       );
 }
