@@ -42,10 +42,6 @@
   margin-left: 50px;
 }
 
-.container {
-  display: grid;
-}
-
 .wrapper {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -78,6 +74,29 @@
   grid-row: 3;
   grid-column: 2;
 }
-
+.seven {
+  grid-row: 4;
+  grid-column: 1;
+}
+.eight {
+  grid-row: 4;
+  grid-column: 2;
+}
+.nine {
+  grid-row: 5;
+  grid-column: 1;
+}
+.ten {
+  grid-row: 5;
+  grid-column: 2;
+}
+.eleven {
+  grid-row: 6;
+  grid-column: 1;
+}
+.twelve {
+  grid-row: 6;
+  grid-column: 2;
+}
 
 

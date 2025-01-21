@@ -17,52 +17,7 @@ function TaskForm () {
     
       return (
         <form onSubmit={handleSubmit}>
-
-
-            <div>
-                <label>Priority:
-                    <input  className="create-task-input"
-                            type="number" 
-                            name="priority" 
-                            min="0"
-                            max="5"
-                            step="1"
-                            value={inputs.priority || ""} 
-                            onChange={handleChange}
-                    />
-                    </label>
-            </div>
-
-            <div>
-                <label>Category:
-                    <select className="create-task-input"
-                            type="text" 
-                            name="taskType" 
-                            value={inputs.taskType || ""} 
-                            onChange={handleChange}>
-                        <option value="appointment">Appointment</option> 
-                        <option value="event">Event</option>
-                        <option value="school">School</option>
-                        <option value="social">Social</option>
-                        <option value="work">Work</option>      
-                    </select>
-                </label>
-            </div>
-          
-            <div>
-                <label>Description:
-                    <input  className="create-task-input"
-                            type="text" 
-                            name="description" 
-                            value={inputs.description || ""} 
-                            onChange={handleChange}
-                    />
-                </label>
-            </div>
-            <div>
-                <input type="submit" />
-            </div>
-
+            <h1>Create New Task</h1>
             <div class="wrapper">
                 <div class="one">
                     <label>Task Name:</label>
@@ -98,8 +53,56 @@ function TaskForm () {
                             onChange={handleChange}
                     />
                 </div>
+                <div class="seven">
+                    <label>Priority:</label>
+                </div>
+                <div class="eight">
+                    <input  className="create-task-input"
+                            type="number" 
+                            name="priority" 
+                            min="0"
+                            max="5"
+                            step="1"
+                            value={inputs.priority || ""} 
+                            onChange={handleChange}
+                    />
+                </div>
+                <div class="nine">
+                    <label>Category:</label>
+                </div>
+                <div class="ten">
+                    <div>
+                        <select className="create-task-input"
+                                type="text" 
+                                name="taskType" 
+                                value={inputs.taskType || ""} 
+                                onChange={handleChange}>
+                            <option value="appointment">Appointment</option> 
+                            <option value="event">Event</option>
+                            <option value="school">School</option>
+                            <option value="social">Social</option>
+                            <option value="work">Work</option>      
+                        </select>
+                    </div>
+                </div>
+                <div class="eleven">
+                    <label>Description:</label>
+                </div>
+                <div class="twelve">
+                    <div>
+                        <input  className="create-task-input"
+                                type="text" 
+                                name="description" 
+                                value={inputs.description || ""} 
+                                onChange={handleChange}
+                        />
+                    </div>
+                </div>
             </div>
 
+            <div>
+                <input type="submit" />
+            </div>
         </form>
       );
 }
