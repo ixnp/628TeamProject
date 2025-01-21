@@ -4,30 +4,32 @@ import TaskForm from './pages/CreateTaskPage';
 import React, {useState} from "react";
 
 function App() {
-  const [text, setText] = useState('Initial Text');
-  
+  const [text, setText] = useState('');
+  // TODO: Determine if we want to do an MPA or SPA. Adjust this code block accordingly.
   return (
     <div>
       <h1>628 Group Project - Untitled</h1>
       <CreateNewTaskButton/>
-      <TaskForm/>
+      <p>{text}</p> 
     </div>
   )
-}
 
-function CreateNewTaskButton () {
+  function CreateNewTaskButton () {
 
-  function handleClick() {
+    function handleClick() {
+      return (
+        setText(<TaskForm/>)
+      );
+    }
+    
     return (
-      <TaskForm/>
-    );
+      <button onClick={handleClick}>
+        Create New Task
+      </button>
+    )
   }
-  
-  return (
-    <button onClick={handleClick}>
-      Create New Task
-    </button>
-  )
 }
+
+
 
 export default App;
