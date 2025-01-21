@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import './../App.css'
 
 function TaskForm () {
     const [inputs, setInputs] = useState({});
@@ -11,7 +12,6 @@ function TaskForm () {
     
       const handleSubmit = (event) => {
         // TODO: Add Task to Database.
-        event.preventDefault();
       }
     
       return (
@@ -19,66 +19,75 @@ function TaskForm () {
             <div>
                 <h1>Create New Task</h1>
                 <label>Task Name:
-                <input 
-                    type="text" 
-                    name="username" 
-                    value={inputs.username || ""} 
-                    onChange={handleChange}
+                <input  className="create-task-input"
+                        type="text" 
+                        name="taskName" 
+                        maxLength="16"
+                        value={inputs.taskName || ""} 
+                        onChange={handleChange}
                 />
                 </label>
             </div>
 
             <div>
                 <label>Due Date:
-                <input 
-                    type="number" 
-                    name="age" 
-                    value={inputs.age || ""} 
-                    onChange={handleChange}
+                <input  className="create-task-input"
+                        type="date" 
+                        name="dueDate" 
+                        value={inputs.dueDate || ""} 
+                        onChange={handleChange}
                 />
                 </label>
             </div>
 
             <div>
                 <label>Time:
-                <input 
-                    type="number" 
-                    name="age" 
-                    value={inputs.age || ""} 
-                    onChange={handleChange}
+                <input  className="create-task-input"
+                        type="time" 
+                        name="dueTime" 
+                        value={inputs.dueTime || ""} 
+                        onChange={handleChange}
                 />
                 </label>
             </div>
 
             <div>
                 <label>Priority:
-                    <input 
-                    type="number" 
-                    name="age" 
-                    value={inputs.age || ""} 
-                    onChange={handleChange}
+                    <input  className="create-task-input"
+                            type="number" 
+                            name="priority" 
+                            min="0"
+                            max="5"
+                            step="1"
+                            value={inputs.priority || ""} 
+                            onChange={handleChange}
                     />
                     </label>
             </div>
 
             <div>
                 <label>Category:
-                    <input 
-                    type="number" 
-                    name="age" 
-                    value={inputs.age || ""} 
-                    onChange={handleChange}
-                    />
+                    <select className="create-task-input"
+                            type="text" 
+                            name="taskType" 
+                            value={inputs.taskType || ""} 
+                            onChange={handleChange}>
+                        <option value="appointment">Appointment</option> 
+                        <option value="event">Event</option>
+                        <option value="school">School</option>
+                        <option value="social">Social</option>
+                        <option value="work">Work</option>      
+                    </select>
                 </label>
             </div>
           
             <div>
                 <label>Description:
-                    <input 
-                    type="number" 
-                    name="age" 
-                    value={inputs.age || ""} 
-                    onChange={handleChange}
+                    <input  className="create-task-input"
+                            type="text" 
+                            name="description" 
+                            value={inputs.description || ""} 
+                            onChange={handleChange}
                     />
                 </label>
             </div>
