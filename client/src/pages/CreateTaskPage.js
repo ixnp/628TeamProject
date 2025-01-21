@@ -11,8 +11,8 @@ function TaskForm () {
       }
     
       const handleSubmit = (event) => {
-        // TODO: Data validation.
-        // TODO: Add Task to Database.
+        // TODO #1: Data validation.
+        // TODO #2: Add Task to Database.
       }
     
       return (
@@ -20,9 +20,11 @@ function TaskForm () {
             <div class="form-global">
                 <h1>Create New Task</h1>
                 <div class="wrapper">
+
                     <div class="name-label">
                         <label>Task Name:</label>
                     </div>
+
                     <div class="name">
                         <input  className="create-task-input"
                                 type="text" 
@@ -32,9 +34,11 @@ function TaskForm () {
                                 onChange={handleChange}
                         />
                     </div>
+
                     <div class="date-label">
                         <label>Due Date:</label>
                     </div>
+
                     <div class="date">
                         <input  className="create-task-input"
                             type="date" 
@@ -43,9 +47,11 @@ function TaskForm () {
                             onChange={handleChange}
                         />
                     </div>
+
                     <div class="time-label">
                         <label>Due Time:</label>
                     </div>
+
                     <div class="time">
                         <input  className="create-task-input"
                                 type="time" 
@@ -54,9 +60,11 @@ function TaskForm () {
                                 onChange={handleChange}
                         />
                     </div>
+
                     <div class="priority-label">
                         <label>Priority:</label>
                     </div>
+
                     <div class="priority">
                         <input  className="create-task-input"
                                 type="number" 
@@ -68,39 +76,39 @@ function TaskForm () {
                                 onChange={handleChange}
                         />
                     </div>
+
                     <div class="category-label">
                         <label>Category:</label>
                     </div>
+
                     <div class="category">
-                        <div>
-                            <select className="create-task-select"
-                                    type="text" 
-                                    name="taskType" 
-                                    value={inputs.taskType || ""} 
-                                    onChange={handleChange}>
-                                <option value="appointment">Appointment</option> 
-                                <option value="event">Event</option>
-                                <option value="school">School</option>
-                                <option value="social">Social</option>
-                                <option value="work">Work</option>      
-                            </select>
-                        </div>
+                        <select className="create-task-select"
+                                type="text" 
+                                name="taskType" 
+                                value={inputs.taskType || ""} 
+                                onChange={handleChange}>
+                            <option value="appointment">Appointment</option> 
+                            <option value="event">Event</option>
+                            <option value="school">School</option>
+                            <option value="social">Social</option>
+                            <option value="work">Work</option>      
+                        </select>
                     </div>
+
                     <div class="desc-label">
                         <label>Description:</label>
                     </div>
-                    <div class="desc">
-                        <div>
-                            <input  className="create-task-input"
-                                    type="text" 
-                                    name="description" 
-                                    value={inputs.description || ""} 
-                                    onChange={handleChange}
-                            />
-                        </div>
-                    </div>
-                </div>
 
+                    <div class="desc">
+                        <input  className="create-task-input"
+                                type="text" 
+                                name="description" 
+                                value={inputs.description || ""} 
+                                onChange={handleChange}
+                        />
+                    </div>
+
+                </div>
                 <div>
                     <input type="submit" />
                 </div>
