@@ -19,10 +19,10 @@ function TaskForm () {
         <form onSubmit={handleSubmit}>
             <h1>Create New Task</h1>
             <div class="wrapper">
-                <div class="one">
+                <div class="name-label">
                     <label>Task Name:</label>
                 </div>
-                <div class="two">
+                <div class="name">
                     <input  className="create-task-input"
                             type="text" 
                             name="taskName" 
@@ -31,10 +31,10 @@ function TaskForm () {
                             onChange={handleChange}
                     />
                 </div>
-                <div class="three">
+                <div class="date-label">
                     <label>Due Date:</label>
                 </div>
-                <div class="four">
+                <div class="date">
                     <input  className="create-task-input"
                         type="date" 
                         name="dueDate" 
@@ -42,10 +42,10 @@ function TaskForm () {
                         onChange={handleChange}
                     />
                 </div>
-                <div class="five">
+                <div class="time-label">
                     <label>Due Time:</label>
                 </div>
-                <div class="six">
+                <div class="time">
                     <input  className="create-task-input"
                             type="time" 
                             name="dueTime" 
@@ -53,10 +53,10 @@ function TaskForm () {
                             onChange={handleChange}
                     />
                 </div>
-                <div class="seven">
+                <div class="priority-label">
                     <label>Priority:</label>
                 </div>
-                <div class="eight">
+                <div class="priority">
                     <input  className="create-task-input"
                             type="number" 
                             name="priority" 
@@ -67,12 +67,12 @@ function TaskForm () {
                             onChange={handleChange}
                     />
                 </div>
-                <div class="nine">
+                <div class="category-label">
                     <label>Category:</label>
                 </div>
-                <div class="ten">
+                <div class="category">
                     <div>
-                        <select className="create-task-input"
+                        <select className="create-task-select"
                                 type="text" 
                                 name="taskType" 
                                 value={inputs.taskType || ""} 
@@ -85,10 +85,10 @@ function TaskForm () {
                         </select>
                     </div>
                 </div>
-                <div class="eleven">
+                <div class="desc-label">
                     <label>Description:</label>
                 </div>
-                <div class="twelve">
+                <div class="desc">
                     <div>
                         <input  className="create-task-input"
                                 type="text" 

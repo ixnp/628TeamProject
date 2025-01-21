@@ -39,62 +39,65 @@
 
 .create-task-input {
   width: 200px;
-  margin-left: 50px;
+}
+
+.create-task-select {
+  width: 208px;
+  border: 1px solid #ccc;
+  border-radius: 2px;
 }
 
 .wrapper {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-  grid-auto-rows: minmax(100px, auto);
+  grid-template-columns: 100px 200px
 }
-.one {
+.name-label {
   grid-row: 1;
   grid-column: 1;
 }
-.two {
+.name {
   grid-row: 1;
   grid-column: 2;
 }
-.three {
+.date-label {
   grid-row: 2;
   grid-column: 1;
   
 }
-.four {
+.date {
   grid-row: 2;
   grid-column: 2;
 }
-.five {
+.time-label {
   grid-row: 3;
   grid-column: 1;
   
 }
-.six {
+.time {
   grid-row: 3;
   grid-column: 2;
 }
-.seven {
+.priority-label {
   grid-row: 4;
   grid-column: 1;
 }
-.eight {
+.priority {
   grid-row: 4;
   grid-column: 2;
 }
-.nine {
+.category-label {
   grid-row: 5;
   grid-column: 1;
 }
-.ten {
+.category {
   grid-row: 5;
   grid-column: 2;
 }
-.eleven {
+.desc-label {
   grid-row: 6;
   grid-column: 1;
 }
-.twelve {
+.desc {
   grid-row: 6;
   grid-column: 2;
 }
