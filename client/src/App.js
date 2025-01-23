@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import TaskForm from './pages/CreateTaskPage';
+import TaskForm from './components/CreateTaskPage';
 import React, {useState} from "react";
 
 function App() {
