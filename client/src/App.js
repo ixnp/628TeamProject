@@ -1,25 +1,35 @@
 import logo from './logo.svg';
 import './App.css';
+import TaskForm from './components/CreateTaskPage';
+import React, {useState} from "react";
 
 function App() {
+  const [text, setText] = useState('');
+  // TODO: Determine if we want to do an MPA or SPA. Adjust this code block accordingly.
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>628 Group Project - Untitled</h1>
+      <CreateNewTaskButton/>
+      <p>{text}</p> 
     </div>
-  );
+  )
+
+  function CreateNewTaskButton () {
+
+    function handleClick() {
+      return (
+        setText(<TaskForm/>)
+      );
+    }
+    
+    return (
+      <button onClick={handleClick}>
+        Create New Task
+      </button>
+    )
+  }
 }
+
+
 
 export default App;
