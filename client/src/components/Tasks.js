@@ -35,13 +35,13 @@ function TaskForm({ tasks }) {
         <option value="alphabetAscending">Alphabetical: Lowest to Highest</option>
       </select>
 
-      <TaskList tasks={tasks} category={selectedCategory}/>
+      <TaskList tasks={sort(tasks)} category={selectedCategory}/>
     </>
   );
 
   /*
-  * Sort functions.
-  */
+   * Sort functions.
+   */
   function compareTasks(taskOne, TaskTwo) {
     switch(selectedSort) {
       case "dueDateAscending":
@@ -60,57 +60,56 @@ function TaskForm({ tasks }) {
   }
 
   function sortDueDateDescending(taskOne, TaskTwo) {
-    return taskOne.dueDate > TaskTwo.dueDate;
-  }
-
-  function sortDueDateAscending(taskOne, TaskTwo) {
     return taskOne.dueDate < TaskTwo.dueDate;
   }
 
-  function sortPriorityDescending(taskOne, TaskTwo) {
-    return taskOne.priority > TaskTwo.priority;
+  function sortDueDateAscending(taskOne, TaskTwo) {
+    return taskOne.dueDate > TaskTwo.dueDate;
   }
 
-  function sortPriorityAscending(taskOne, TaskTwo) {
+  function sortPriorityDescending(taskOne, TaskTwo) {
     return taskOne.priority < TaskTwo.priority;
   }
 
-  function sortAlphabetDescending(taskOne, TaskTwo) {
-    return taskOne.taskName > TaskTwo.taskName;
+  function sortPriorityAscending(taskOne, TaskTwo) {
+    return taskOne.priority > TaskTwo.priority;
   }
 
-  function sortAlphabetAscending(taskOne, TaskTwo) {
+  function sortAlphabetDescending(taskOne, TaskTwo) {
     return taskOne.taskName < TaskTwo.taskName;
   }
 
-  function mergeSort(tasks) {
+  function sortAlphabetAscending(taskOne, TaskTwo) {
+    return taskOne.taskName > TaskTwo.taskName;
+  }
+
+  function sort(tasks) {
     if (tasks.length <= 1) {
       return tasks;
     }
   
-    const mid = Math.floor(tasks.length / 2);
-    const left = tasks.slice(0, mid);
-    const right = tasks.slice(mid);
+    const index = Math.floor(tasks.length / 2);
+    const left = tasks.slice(0, index);
+    const right = tasks.slice(index);
   
-    return merge(mergeSort(left), mergeSort(right));
+    return merge(sort(left), sort(right));
   }
   
   function merge(left, right) {
     const result = [];
-    let leftIndex = 0;
-    let rightIndex = 0;
+    let i = 0, j = 0;
   
-    while (leftIndex < left.length && rightIndex < right.length) {
-      if (compareTasks(left[leftIndex], right[rightIndex])) {
-        result.push(left[leftIndex]);
-        leftIndex++;
+    while (i < left.length && j < right.length) {
+      if (compareTasks(left[i], right[j])) {
+        result.push(left[i]);
+        i++;
       } else {
-        result.push(right[rightIndex]);
-        rightIndex++;
+        result.push(right[j]);
+        j++;
       }
     }
   
-    return [...result, ...left.slice(leftIndex), ...right.slice(rightIndex)];
+    return [...result, ...left.slice(i), ...right.slice(j)];
   }
 }
 

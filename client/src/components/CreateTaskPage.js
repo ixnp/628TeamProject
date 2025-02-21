@@ -93,11 +93,11 @@ function TaskForm({ updateTasks }) {
               value={inputs.taskType || ""}
               onChange={handleChange}
             >
-              <option value="appointment">Appointment</option>
-              <option value="event">Event</option>
-              <option value="school">School</option>
-              <option value="social">Social</option>
-              <option value="work">Work</option>
+              <option value="Appointment">Appointment</option>
+              <option value="Event">Event</option>
+              <option value="School">School</option>
+              <option value="Social">Social</option>
+              <option value="Work">Work</option>
             </select>
           </div>
 

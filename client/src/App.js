@@ -8,8 +8,9 @@ function App() {
   const [formRendered, setformRendered] = useState("");
   const [taskStates, setTasks] = useState(tasksTemp);
 
-  const updateTasks = (newTask) =>
-    setTasks((prevTasks) => setTasks([...prevTasks, newTask]));
+  const updateTasks = (newTask) => {
+    setTasks([...taskStates, newTask]);
+  }
 
   //Renders Task Form
   function CreateNewTaskButton() {
