@@ -9,7 +9,7 @@ function App() {
   const [taskStates, setTasks] = useState(tasksTemp);
 
   const updateTasks = (newTask) => {
-    setTasks([...taskStates, newTask]);
+    setTasks((prevTasks) => setTasks([...prevTasks, newTask]));
   }
 
   //Renders Task Form
