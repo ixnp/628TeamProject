@@ -2,16 +2,17 @@ import React, { useState } from "react";
 import "../styles/CreateTaskPage.css";
 
 function TaskForm({ updateTasks }) {
-  const [inputs, setInputs] = useState({});
+  const [newTask, setNewTask] = useState({});
+
   const handleChange = (event) => {
-    const name = event.target.name;
-    const value = event.target.value;
-    setInputs((values) => ({ ...values, [name]: value }));
+    const name = event.target.name;     // The updated field name.
+    const value = event.target.value;   // The updated field's new value.
+    setNewTask((values) => ({ ...values, [name]: value }));
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    updateTasks(inputs);
+    updateTasks(newTask);
     // TODO #1: Data validation.
     // TODO #2: Add Task to Database.
   };
@@ -31,7 +32,7 @@ function TaskForm({ updateTasks }) {
               type="text"
               name="taskName"
               maxLength="16"
-              value={inputs.taskName || ""}
+              value={newTask.taskName || ""}
               onChange={handleChange}
             />
           </div>
@@ -45,7 +46,7 @@ function TaskForm({ updateTasks }) {
               className="create-task-input"
               type="date"
               name="dueDate"
-              value={inputs.dueDate || ""}
+              value={newTask.dueDate || ""}
               onChange={handleChange}
             />
           </div>
@@ -59,7 +60,7 @@ function TaskForm({ updateTasks }) {
               className="create-task-input"
               type="time"
               name="dueTime"
-              value={inputs.dueTime || ""}
+              value={newTask.dueTime || ""}
               onChange={handleChange}
             />
           </div>
@@ -76,7 +77,7 @@ function TaskForm({ updateTasks }) {
               min="0"
               max="5"
               step="1"
-              value={inputs.priority || ""}
+              value={newTask.priority || ""}
               onChange={handleChange}
             />
           </div>
@@ -90,7 +91,7 @@ function TaskForm({ updateTasks }) {
               className="create-task-select"
               type="text"
               name="taskType"
-              value={inputs.taskType || ""}
+              value={newTask.taskType || "Appointment"}
               onChange={handleChange}
             >
               <option value="Appointment">Appointment</option>
@@ -110,7 +111,7 @@ function TaskForm({ updateTasks }) {
               className="create-task-input"
               type="text"
               name="description"
-              value={inputs.description || ""}
+              value={newTask.description || ""}
               onChange={handleChange}
             />
           </div>

@@ -1,5 +1,5 @@
 import TaskForm from "./components/CreateTaskPage";
-import Tasks from "./components/Tasks";
+import Tasks from "./components/TaskForm";
 import React, { useState } from "react";
 import {tasksTemp} from "./data/TempTasks";
 
@@ -8,14 +8,14 @@ function App() {
   const [formRendered, setformRendered] = useState("");
   const [taskStates, setTasks] = useState(tasksTemp);
 
-  const updateTasks = (newTask) => {
-    setTasks((prevTasks) => setTasks([...prevTasks, newTask]));
+  const addTask = (newTask) => {
+    setTasks([...taskStates, newTask]);
   }
 
   //Renders Task Form
   function CreateNewTaskButton() {
     function handleClick() {
-      return setformRendered(<TaskForm updateTasks={updateTasks} />);
+      return setformRendered(<TaskForm updateTasks={addTask} />);
     }
 
     return <button onClick={handleClick}>Create New Task</button>;
