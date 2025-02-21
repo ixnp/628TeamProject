@@ -60,27 +60,27 @@ function TaskForm({ tasks }) {
   }
 
   function sortDueDateDescending(taskOne, TaskTwo) {
-    return true;
+    return taskOne.dueDate > TaskTwo.dueDate;
   }
 
   function sortDueDateAscending(taskOne, TaskTwo) {
-    return true;
+    return taskOne.dueDate < TaskTwo.dueDate;
   }
 
   function sortPriorityDescending(taskOne, TaskTwo) {
-    return true;
+    return taskOne.priority > TaskTwo.priority;
   }
 
   function sortPriorityAscending(taskOne, TaskTwo) {
-    return true;
+    return taskOne.priority < TaskTwo.priority;
   }
 
   function sortAlphabetDescending(taskOne, TaskTwo) {
-    return true;
+    return taskOne.taskName > TaskTwo.taskName;
   }
 
   function sortAlphabetAscending(taskOne, TaskTwo) {
-    return true;
+    return taskOne.taskName < TaskTwo.taskName;
   }
 
   function mergeSort(tasks) {
@@ -101,7 +101,7 @@ function TaskForm({ tasks }) {
     let rightIndex = 0;
   
     while (leftIndex < left.length && rightIndex < right.length) {
-      if (left[leftIndex] < right[rightIndex]) {
+      if (compareTasks(left[leftIndex], right[rightIndex])) {
         result.push(left[leftIndex]);
         leftIndex++;
       } else {
