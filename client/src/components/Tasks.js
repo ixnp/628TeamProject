@@ -3,7 +3,7 @@ import {useState} from "react";
 
 function TaskForm({ tasks }) {
   const [selectedCategory, setSelectedCategory] = useState("All");
-  const [selelectedSort, setSelectedSort] = useState("dueDateDescending")
+  const [selectedSort, setSelectedSort] = useState("dueDateDescending")
   
   const updateSelectedCategory = (event) => {
       setSelectedCategory(event.target.value);
@@ -35,7 +35,7 @@ function TaskForm({ tasks }) {
         <option value="alphabetAscending">Alphabetical: Lowest to Highest</option>
       </select>
 
-      <TaskList tasks={tasks} category={selectedCategory} sort={selelectedSort}/>
+      <TaskList tasks={tasks} category={selectedCategory}/>
     </>
   );
 }

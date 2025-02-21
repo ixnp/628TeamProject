@@ -1,6 +1,6 @@
 import TaskCard from "./TaskCard";
 
-export default function TaskList({tasks, category, sort}) { 
+export default function TaskList({tasks, category}) { 
     function doRenderTask(task, category) {
         return (category === task.taskType) || (category === "All")
     }
