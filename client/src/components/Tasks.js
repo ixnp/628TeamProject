@@ -1,4 +1,4 @@
-import TaskCard from "./TaskCard";
+import TaskList from "./TaskList";
 import {useState} from "react";
 
 function TaskForm({ tasks }) {
@@ -34,9 +34,8 @@ function TaskForm({ tasks }) {
         <option value="alphabetDescending">Alphabetical: Highest to Lowest</option>
         <option value="alphabetAscending">Alphabetical: Lowest to Highest</option>
       </select>
-      {tasks.map((task) => (
-        <TaskCard {...task} />
-      ))}
+
+      <TaskList tasks={tasks} category={selectedCategory} sort={selelectedSort}/>
     </>
   );
 }
