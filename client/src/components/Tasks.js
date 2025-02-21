@@ -38,6 +38,80 @@ function TaskForm({ tasks }) {
       <TaskList tasks={tasks} category={selectedCategory}/>
     </>
   );
+
+  /*
+  * Sort functions.
+  */
+  function compareTasks(taskOne, TaskTwo) {
+    switch(selectedSort) {
+      case "dueDateAscending":
+        return sortDueDateAscending(taskOne, TaskTwo);
+      case "priorityDescending":
+        return sortPriorityDescending(taskOne, TaskTwo);
+      case "priorityAscending":
+        return sortPriorityAscending(taskOne, TaskTwo);
+      case "alphabetDescending":
+        return sortAlphabetDescending(taskOne, TaskTwo);
+      case "alphabetAscending":
+        return sortAlphabetAscending(taskOne, TaskTwo);
+      default:
+        return sortDueDateDescending(taskOne, TaskTwo);
+    }
+  }
+
+  function sortDueDateDescending(taskOne, TaskTwo) {
+    return true;
+  }
+
+  function sortDueDateAscending(taskOne, TaskTwo) {
+    return true;
+  }
+
+  function sortPriorityDescending(taskOne, TaskTwo) {
+    return true;
+  }
+
+  function sortPriorityAscending(taskOne, TaskTwo) {
+    return true;
+  }
+
+  function sortAlphabetDescending(taskOne, TaskTwo) {
+    return true;
+  }
+
+  function sortAlphabetAscending(taskOne, TaskTwo) {
+    return true;
+  }
+
+  function mergeSort(tasks) {
+    if (tasks.length <= 1) {
+      return tasks;
+    }
+  
+    const mid = Math.floor(tasks.length / 2);
+    const left = tasks.slice(0, mid);
+    const right = tasks.slice(mid);
+  
+    return merge(mergeSort(left), mergeSort(right));
+  }
+  
+  function merge(left, right) {
+    const result = [];
+    let leftIndex = 0;
+    let rightIndex = 0;
+  
+    while (leftIndex < left.length && rightIndex < right.length) {
+      if (left[leftIndex] < right[rightIndex]) {
+        result.push(left[leftIndex]);
+        leftIndex++;
+      } else {
+        result.push(right[rightIndex]);
+        rightIndex++;
+      }
+    }
+  
+    return [...result, ...left.slice(leftIndex), ...right.slice(rightIndex)];
+  }
 }
 
 export default TaskForm;
