@@ -5,10 +5,10 @@ import isTaskValid from "./ValidateTask";
 function TaskForm({ updateTasks }) {
   const [newTask, setNewTask] = useState({
     taskName: "",
-    taskType: "Appointment",
     dueDate: "",
     dueTime: "23:59",
     priority: 0,
+    taskType: "Appointment",
     description: "",
   });
 
@@ -84,7 +84,7 @@ function TaskForm({ updateTasks }) {
               className="create-task-input"
               type="number"
               name="priority"
-              min="0"
+              min="1"
               max="5"
               step="1"
               value={newTask.priority || ""}
@@ -101,7 +101,7 @@ function TaskForm({ updateTasks }) {
               className="create-task-select"
               type="text"
               name="taskType"
-              value={newTask.taskType || "Appointment"}
+              value={newTask.taskType || ""}
               onChange={handleChange}
             >
               <option value="Appointment">Appointment</option>

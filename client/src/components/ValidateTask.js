@@ -5,13 +5,18 @@ export default function isTaskValid(newTaskData) {
         return false;
     }
 
-    if((!newTaskData.dueDate.trim())) {
+    if(!newTaskData.dueDate.trim()) {
         alert("ERROR: Task must have a due date.")
         return false;  
     }
 
-    if((!newTaskData.dueTime.trim())) {
+    if(!newTaskData.dueTime.trim()) {
         alert("ERROR: Task must have a due time.")
+        return false; 
+    }
+
+    if(newTaskData.priority === 0){
+        alert("ERROR: Task must have a priority.")
         return false; 
     }
 
