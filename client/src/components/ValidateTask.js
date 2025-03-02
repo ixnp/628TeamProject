@@ -27,6 +27,12 @@ export default function isTaskValid(newTaskData) {
         alert("ERROR: Task must have a priority.")
         return false; 
     }
+
+    if(!newTaskData.taskType.trim()){
+        alert("ERROR: Task must have a category.")
+        return false; 
+    }
+
     return true;   
 };
 

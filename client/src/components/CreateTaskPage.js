@@ -101,7 +101,7 @@ function TaskForm({ updateTasks }) {
               className="create-task-select"
               type="text"
               name="taskType"
-              value={newTask.taskType || ""}
+              value={newTask.taskType || "Appointment"}
               onChange={handleChange}
             >
               <option value="Appointment">Appointment</option>
