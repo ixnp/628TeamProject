@@ -1,5 +1,6 @@
 import TaskList from "./TaskList";
 import {useState} from "react";
+import { getTaskTime } from "./TaskUtils";
 
 function TaskForm({ tasks }) {
   const [selectedCategory, setSelectedCategory] = useState("All");
@@ -42,45 +43,45 @@ function TaskForm({ tasks }) {
   /*
    * Sort functions.
    */
-  function compareTasks(taskOne, TaskTwo) {
+  function compareTasks(taskOne, taskTwo) {
     switch(selectedSort) {
       case "dueDateAscending":
-        return sortDueDateAscending(taskOne, TaskTwo);
+        return sortDueDateAscending(taskOne, taskTwo);
       case "priorityDescending":
-        return sortPriorityDescending(taskOne, TaskTwo);
+        return sortPriorityDescending(taskOne, taskTwo);
       case "priorityAscending":
-        return sortPriorityAscending(taskOne, TaskTwo);
+        return sortPriorityAscending(taskOne, taskTwo);
       case "alphabetDescending":
-        return sortAlphabetDescending(taskOne, TaskTwo);
+        return sortAlphabetDescending(taskOne, taskTwo);
       case "alphabetAscending":
-        return sortAlphabetAscending(taskOne, TaskTwo);
+        return sortAlphabetAscending(taskOne, taskTwo);
       default:
-        return sortDueDateDescending(taskOne, TaskTwo);
+        return sortDueDateDescending(taskOne, taskTwo);
     }
   }
 
-  function sortDueDateDescending(taskOne, TaskTwo) {
-    return taskOne.dueDate < TaskTwo.dueDate;
+  function sortDueDateDescending(taskOne, taskTwo) {
+    return getTaskTime(taskOne) < getTaskTime(taskTwo);
   }
 
-  function sortDueDateAscending(taskOne, TaskTwo) {
-    return taskOne.dueDate > TaskTwo.dueDate;
+  function sortDueDateAscending(taskOne, taskTwo) {
+    return getTaskTime(taskOne) < getTaskTime(taskTwo);
   }
 
-  function sortPriorityDescending(taskOne, TaskTwo) {
-    return taskOne.priority < TaskTwo.priority;
+  function sortPriorityDescending(taskOne, taskTwo) {
+    return taskOne.priority < taskTwo.priority;
   }
 
-  function sortPriorityAscending(taskOne, TaskTwo) {
-    return taskOne.priority > TaskTwo.priority;
+  function sortPriorityAscending(taskOne, taskTwo) {
+    return taskOne.priority > taskTwo.priority;
   }
 
-  function sortAlphabetDescending(taskOne, TaskTwo) {
-    return taskOne.taskName < TaskTwo.taskName;
+  function sortAlphabetDescending(taskOne, taskTwo) {
+    return taskOne.taskName < taskTwo.taskName;
   }
 
-  function sortAlphabetAscending(taskOne, TaskTwo) {
-    return taskOne.taskName > TaskTwo.taskName;
+  function sortAlphabetAscending(taskOne, taskTwo) {
+    return taskOne.taskName > taskTwo.taskName;
   }
 
   function sort(tasks) {

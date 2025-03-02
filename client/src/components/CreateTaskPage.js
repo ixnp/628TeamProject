@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../styles/CreateTaskPage.css";
-import isTaskValid from "./ValidateTask";
+import { isTaskValid } from "./TaskUtils";
 
 function TaskForm({ updateTasks }) {
   const [newTask, setNewTask] = useState({

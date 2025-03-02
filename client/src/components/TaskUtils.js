@@ -1,4 +1,4 @@
-export default function isTaskValid(newTaskData) {
+export function isTaskValid(newTaskData) {
 
     if(!newTaskData.taskName.trim()) {
         alert("ERROR: Task cannot have an empty name.")
@@ -15,12 +15,11 @@ export default function isTaskValid(newTaskData) {
         return false; 
     }
 
-    const[year, month, day] = newTaskData.dueDate.split("-");
-    const[hour, minute] = newTaskData.dueTime.split(":");
-    let dueDate = new Date(year, month-1, day, hour, minute, 0);
+    let dueDate = getTaskTime(newTaskData);
     let today = new Date();
     if(dueDate < today) {
         alert("ERROR: Task is overdue.")
+        return false;
     }
 
     if(newTaskData.priority === 0){
@@ -36,5 +35,8 @@ export default function isTaskValid(newTaskData) {
     return true;   
 };
 
-
-
+export function getTaskTime(task) {
+    const[year, month, day] = task.dueDate.split("-");
+    const[hour, minute] = task.dueTime.split(":");
+    return new Date(year, month-1, day, hour, minute, 0);
+}

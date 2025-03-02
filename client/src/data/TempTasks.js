@@ -41,4 +41,12 @@ export const tasksTemp = [
       taskName: "Community Cleanup",
       taskType: "Event",
     },
+    {
+      description: "Finish filing taxes, and submit to the IRS.",
+      dueDate: "2025-01-27",
+      dueTime: "12:00",
+      priority: 1,
+      taskName: "Pay Taxes",
+      taskType: "Event",
+    },
   ];
