@@ -15,21 +15,19 @@ export default function isTaskValid(newTaskData) {
         return false; 
     }
 
-    if(newTaskData.priority === 0){
-        alert("ERROR: Task must have a priority.")
-        return false; 
-    }
-
     const[year, month, day] = newTaskData.dueDate.split("-");
     const[hour, minute] = newTaskData.dueTime.split(":");
     let dueDate = new Date(year, month-1, day, hour, minute, 0);
     let today = new Date();
-    alert(dueDate)
+    if(dueDate < today) {
+        alert("ERROR: Task is overdue.")
+    }
 
-    
-    
-    return true;
-      
+    if(newTaskData.priority === 0){
+        alert("ERROR: Task must have a priority.")
+        return false; 
+    }
+    return true;   
 };
 
 
