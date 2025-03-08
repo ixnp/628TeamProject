@@ -1,8 +1,16 @@
 import React, { useState } from "react";
 import "../styles/CreateTaskPage.css";
+import { isTaskValid } from "./TaskUtils";
 
 function TaskForm({ updateTasks }) {
-  const [newTask, setNewTask] = useState({});
+  const [newTask, setNewTask] = useState({
+    taskName: "",
+    dueDate: "",
+    dueTime: "23:59",
+    priority: 0,
+    taskType: "Appointment",
+    description: "",
+  });
 
   const handleChange = (event) => {
     const name = event.target.name;     // The updated field name.
@@ -12,10 +20,12 @@ function TaskForm({ updateTasks }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    updateTasks(newTask);
-    // TODO #1: Data validation.
-    // TODO #2: Add Task to Database.
+    if(isTaskValid(newTask)) {
+      updateTasks(newTask);
+    }
   };
+
+  
 
   return (
     <form onSubmit={handleSubmit}>
@@ -74,7 +84,7 @@ function TaskForm({ updateTasks }) {
               className="create-task-input"
               type="number"
               name="priority"
-              min="0"
+              min="1"
               max="5"
               step="1"
               value={newTask.priority || ""}

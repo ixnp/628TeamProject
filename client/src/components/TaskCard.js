@@ -10,12 +10,9 @@ function TaskCard({
     <div>
       <h2>{taskName}</h2>
       <ul>
-        <li>Priorty: {priority}</li>
-        <li>Task Type:{taskType}</li>
-        <li>Priorty: {priority}</li>
-        <li>
-          Due Date: {dueDate} <span>Time: {dueTime}</span>
-        </li>
+        <li>Priority: {priority}</li>
+        <li>Task Type: {taskType}</li>
+        <li>Due Date: {dueDate} <span>{dueTime}</span></li>
         <li>Description: {description}</li>
       </ul>
     </div>
