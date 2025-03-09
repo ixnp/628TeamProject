@@ -1,16 +1,10 @@
 import React, { useState } from "react";
 import "../styles/CreateTaskPage.css";
-import { isTaskValid } from "./TaskUtils";
+import { defaultTask, isTaskValid } from "./TaskUtils";
+import { backendURL } from "../data/backendURL";
 
 function TaskForm({ updateTasks }) {
-  const [newTask, setNewTask] = useState({
-    taskName: "",
-    dueDate: "",
-    dueTime: "23:59",
-    priority: 0,
-    taskType: "Appointment",
-    description: "",
-  });
+  const [newTask, setNewTask] = useState({ defaultTask });
 
   const handleChange = (event) => {
     const name = event.target.name;     // The updated field name.
@@ -18,10 +12,26 @@ function TaskForm({ updateTasks }) {
     setNewTask((values) => ({ ...values, [name]: value }));
   };
 
-  const handleSubmit = (event) => {
+  async function handleSubmit(event) {
     event.preventDefault();
     if(isTaskValid(newTask)) {
-      updateTasks(newTask);
+      
+      // const newRecipe = { ...newTask };
+  
+      await fetch(`${backendURL}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newTask),
+      })
+      .catch(error => {
+        window.alert(error);
+        return;
+      });
+    
+      setNewTask({ defaultTask });
+      // navigate("/");
     }
   };
 
