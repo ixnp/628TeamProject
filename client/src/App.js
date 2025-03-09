@@ -30,6 +30,15 @@ function App() {
     return;
   }, [taskStates.length]);
 
+  async function deleteTask(id) {
+    await fetch(`${backendURL}/${id}`, {
+      method: "DELETE"
+    });
+  
+    const newTasks = taskStates.filter((task) => task._id !== id);
+    setTasks(newTasks);
+  }
+
   return (
     <BrowserRouter>
       <div className="container">
