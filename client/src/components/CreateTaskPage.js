@@ -3,7 +3,7 @@ import "../styles/CreateTaskPage.css";
 import { isTaskValid } from "./TaskUtils";
 import { backendURL } from "../data/backendURL";
 
-function TaskForm({ updateTasks }) {
+export default function CreateTaskPage() {
   const [newTask, setNewTask] = useState({ 
     taskName: "",
     dueDate: "",
@@ -20,10 +20,7 @@ function TaskForm({ updateTasks }) {
 
   async function handleSubmit(event) {
     event.preventDefault();
-    if(isTaskValid(newTask)) {
-      
-      // const newRecipe = { ...newTask };
-  
+    if(isTaskValid(newTask)) {  
       await fetch(`${backendURL}`, {
         method: "POST",
         headers: {
@@ -45,8 +42,6 @@ function TaskForm({ updateTasks }) {
         description: ""});
     }
   };
-
-  
 
   return (
     <form onSubmit={handleSubmit}>
@@ -154,5 +149,3 @@ function TaskForm({ updateTasks }) {
     </form>
   );
 }
-
-export default TaskForm;
