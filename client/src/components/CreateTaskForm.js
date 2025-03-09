@@ -57,7 +57,6 @@ export default function CreateTaskPage() {
               className="create-task-input"
               type="text"
               name="taskName"
-              maxLength="16"
               value={newTask.taskName || ""}
               onChange={handleChange}
             />
@@ -143,7 +142,8 @@ export default function CreateTaskPage() {
           </div>
         </div>
         <div>
-          <input type="submit" />
+          <br/>
+          <input type="submit" value="Add Task"/>
         </div>
       </div>
     </form>
