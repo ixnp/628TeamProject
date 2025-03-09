@@ -3,10 +3,10 @@ import "./styles/Main.css";
 import TaskForm from "./components/CreateTaskForm";
 import SortTaskMenu from "./components/SortTaskMenu";
 import AIrequest from "./components/AIrequest";
-
 import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { tasksTemp } from "./data/TempTasks";
+import { backendURL } from "./data/backendURL";
 
 function App() {
   const [taskStates, setTasks] = useState(tasksTemp);
@@ -30,16 +30,6 @@ function App() {
     return;
   }, [taskStates.length]);
 
-
-  //Renders Task Form
-  function CreateNewTaskButton() {
-    function handleClick() {
-      return setformRendered(<TaskForm/>);
-    }
-
-    return <button onClick={handleClick}>Create New Task</button>;
-  }
-
   return (
     <BrowserRouter>
       <div className="container">
@@ -61,7 +51,7 @@ function App() {
       </div>
       <Routes>
         <Route path="/" element={<SortTaskMenu tasks={taskStates} />} />
-        <Route path="/new_task" element={<TaskForm updateTasks={addTask} />} />
+        <Route path="/new_task" element={<TaskForm/>} />
         <Route path="/task_bot" element={<AIrequest />} />
       </Routes>
     </BrowserRouter>
