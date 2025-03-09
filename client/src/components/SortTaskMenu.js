@@ -1,13 +1,43 @@
 import "../styles/Tasks.css";
 
 import TaskList from "./TaskList";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { getTaskTime } from "./TaskUtils";
+import { backendURL } from "../data/backendURL";
 
 //Sorts task
-function SortTaskMenu({ tasks, deleteTask }) {
+function SortTaskMenu() {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [selectedSort, setSelectedSort] = useState("dueDateDescending");
+  const [tasks, setTasks] = useState([]);
+
+  useEffect(() => {
+    async function getTasks() {
+      const response = await fetch(`${backendURL}`);
+
+      if (!response.ok) {
+        const message = `An error occurred: ${response.statusText}`;
+        window.alert(message);
+        return;
+      }
+  
+      const tasks = await response.json();
+      setTasks(tasks)
+    }
+
+    getTasks();
+  
+    return;
+  }, [tasks.length]);
+
+  async function deleteTask(id) {
+    await fetch(`${backendURL}/${id}`, {
+      method: "DELETE"
+    });
+  
+    const newTasks = tasks.filter((task) => task._id !== id);
+    setTasks(newTasks);
+  }
 
   const updateSelectedCategory = (event) => {
     setSelectedCategory(event.target.value);
