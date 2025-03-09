@@ -2,8 +2,10 @@ import "../styles/Form.css";
 import React, { useState } from "react";
 import { isTaskValid } from "./TaskUtils";
 import { backendURL } from "../data/backendURL";
+import { useNavigate } from "react-router-dom";
 
 export default function CreateTaskPage() {
+  const navigate = useNavigate()
   const [newTask, setNewTask] = useState({ 
     taskName: "",
     dueDate: "",
@@ -40,6 +42,7 @@ export default function CreateTaskPage() {
         priority: 0,
         taskType: "Appointment",
         description: ""});
+        navigate("/")
     }
   };
 
