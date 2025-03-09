@@ -1,3 +1,5 @@
+import "./styles/Variables.css";
+import "./styles/Main.css";
 import TaskForm from "./components/CreateTaskForm";
 import SortTaskMenu from "./components/SortTaskMenu";
 import AIrequest from "./components/AIrequest";
@@ -7,7 +9,6 @@ import React, { useState } from "react";
 import { tasksTemp } from "./data/TempTasks";
 
 function App() {
-  const [formRendered, setformRendered] = useState("");
   const [taskStates, setTasks] = useState(tasksTemp);
 
   const addTask = (newTask) => {
@@ -16,7 +17,7 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div className="main container">
+      <div className="container">
         <nav className="navbar">
           <ul>
             <li>

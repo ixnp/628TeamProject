@@ -1,5 +1,5 @@
+import "../styles/Form.css";
 import React, { useState } from "react";
-import "../styles/CreateTaskPage.css";
 import { isTaskValid } from "./TaskUtils";
 
 function TaskForm({ updateTasks }) {
@@ -13,19 +13,17 @@ function TaskForm({ updateTasks }) {
   });
 
   const handleChange = (event) => {
-    const name = event.target.name;     // The updated field name.
-    const value = event.target.value;   // The updated field's new value.
+    const name = event.target.name; // The updated field name.
+    const value = event.target.value; // The updated field's new value.
     setNewTask((values) => ({ ...values, [name]: value }));
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if(isTaskValid(newTask)) {
+    if (isTaskValid(newTask)) {
       updateTasks(newTask);
     }
   };
-
-  
 
   return (
     <form onSubmit={handleSubmit}>
@@ -117,7 +115,7 @@ function TaskForm({ updateTasks }) {
           </div>
 
           <div class="desc">
-            <input
+            <textarea
               className="create-task-input"
               type="text"
               name="description"

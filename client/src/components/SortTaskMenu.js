@@ -1,3 +1,5 @@
+import "../styles/Tasks.css";
+
 import TaskList from "./TaskList";
 import { useState } from "react";
 import { getTaskTime } from "./TaskUtils";
@@ -16,8 +18,7 @@ function SortTaskMenu({ tasks }) {
   };
 
   return (
-    <>
-      <h1>To-Do List</h1>
+    <div className="task-container">
       <select onChange={updateSelectedCategory}>
         <option value="All">All Categories</option>
         <option value="Appointment">Appointment</option>
@@ -40,7 +41,7 @@ function SortTaskMenu({ tasks }) {
       </select>
 
       <TaskList tasks={sort(tasks)} category={selectedCategory} />
-    </>
+    </div>
   );
 
   /*
