@@ -9,7 +9,7 @@ export default function TaskList({tasks, category, deleteTask}) {
         tasks.map((task) => {
             return ( 
                 <>  
-                    {(doRenderTask(task, category) && (<TaskCard {...task} deleteTask={deleteTask}/>))}
+                    {(doRenderTask(task, category) && (<TaskCard task={task} deleteTask={deleteTask}/>))}
                 </>
             )
         })

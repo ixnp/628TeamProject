@@ -1,4 +1,4 @@
-function TaskCard(task, deleteTask) {
+function TaskCard({ task, deleteTask }) {
   return (
     <div className="task-card">
       <h2>{task.taskName}</h2>

@@ -59,7 +59,7 @@ function App() {
         </nav>
       </div>
       <Routes>
-        <Route path="/" element={<SortTaskMenu tasks={taskStates} />} />
+        <Route path="/" element={<SortTaskMenu tasks={taskStates} deleteTask={deleteTask}/>} />
         <Route path="/new_task" element={<TaskForm/>} />
         <Route path="/task_bot" element={<AIrequest />} />
       </Routes>
