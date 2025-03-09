@@ -65,7 +65,7 @@ export default function SortTaskMenu() {
   }
 
   function sortDueDateAscending(taskOne, taskTwo) {
-    return getTaskTime(taskOne) < getTaskTime(taskTwo);
+    return getTaskTime(taskOne) > getTaskTime(taskTwo);
   }
 
   function sortPriorityDescending(taskOne, taskTwo) {
