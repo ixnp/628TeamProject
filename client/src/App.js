@@ -44,7 +44,7 @@ function App() {
               <NavLink to="/new_task">Create New Task</NavLink>
             </li>
             <li>
-              <NavLink to="/task_bot">Taks Bot</NavLink>
+              <NavLink to="/task_bot">Task Bot</NavLink>
             </li>
           </ul>
         </nav>
