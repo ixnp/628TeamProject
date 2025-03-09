@@ -1,10 +1,12 @@
 function TaskCard({
+  _id,
   description,
   dueDate,
   dueTime,
   priority,
   taskName,
   taskType,
+  deleteTask,
 }) {
   return (
     <div className="task-card">
@@ -18,7 +20,7 @@ function TaskCard({
         <li>Description: {description}</li>
       </ul>
       <div className="task-buttons">
-        <button>Delete Task</button>
+        <button onClick={() => deleteTask(_id)}>Delete Task</button>
         <button>Edit Task</button>
       </div>
     </div>

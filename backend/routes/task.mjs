@@ -6,7 +6,6 @@ const router = express.Router();
 
 // This section will help you get a list of all the tasks.
 router.get("/", async (req, res) => {
-  console.log("hi");
   let collection = await db.collection("tasks");
   let results = await collection.find({}).toArray();
   res.send(results).status(200);
@@ -24,6 +23,7 @@ router.get("/:id", async (req, res) => {
 
 // This section will help you create a new task.
 router.post("/", async (req, res) => {
+  console.log(req.body);
   let newDocument = {
     description: req.body.description,
     dueDate: req.body.dueDate,

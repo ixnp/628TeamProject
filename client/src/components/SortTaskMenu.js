@@ -5,7 +5,7 @@ import { useState } from "react";
 import { getTaskTime } from "./TaskUtils";
 
 //Sorts task
-function SortTaskMenu({ tasks }) {
+function SortTaskMenu({ tasks, deleteTask }) {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [selectedSort, setSelectedSort] = useState("dueDateDescending");
 
@@ -40,7 +40,11 @@ function SortTaskMenu({ tasks }) {
         </option>
       </select>
 
-      <TaskList tasks={sort(tasks)} category={selectedCategory} />
+      <TaskList
+        tasks={sort(tasks)}
+        category={selectedCategory}
+        deleteTask={deleteTask}
+      />
     </div>
   );
 
