@@ -1,5 +1,5 @@
+import "../styles/Form.css";
 import React, { useState } from "react";
-import "../styles/CreateTaskPage.css";
 import { isTaskValid } from "./TaskUtils";
 import { backendURL } from "../data/backendURL";
 
@@ -13,8 +13,8 @@ export default function CreateTaskPage() {
     description: ""});
 
   const handleChange = (event) => {
-    const name = event.target.name;     // The updated field name.
-    const value = event.target.value;   // The updated field's new value.
+    const name = event.target.name; // The updated field name.
+    const value = event.target.value; // The updated field's new value.
     setNewTask((values) => ({ ...values, [name]: value }));
   };
 
@@ -133,7 +133,7 @@ export default function CreateTaskPage() {
           </div>
 
           <div class="desc">
-            <input
+            <textarea
               className="create-task-input"
               type="text"
               name="description"

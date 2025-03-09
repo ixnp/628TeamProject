@@ -10,6 +10,10 @@ function TaskCard(task) {
         <button>Delete Task</button>
         <button>Edit Task</button>
       </ul>
+      <div className="task-buttons">
+        <button>Delete Task</button>
+        <button>Edit Task</button>
+      </div>
     </div>
   );
 }

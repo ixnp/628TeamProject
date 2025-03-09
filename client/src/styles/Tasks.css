@@ -1,0 +1,59 @@
+.task-container {
+  color: var(--primary-color);
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  font-size: 1.2rem;
+}
+
+.task-container select {
+  width: 30%;
+  margin: 10px;
+  height: 40px;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.task-card {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  margin: 10px;
+  padding: 10px;
+  width: 100%;
+  border-radius: 8px;
+  display: grid;
+  grid-template-columns: 180px auto 150px;
+  gap: 20px;
+  align-items: center;
+}
+
+.task-card h2 {
+  width: 100%;
+  text-align: left;
+}
+
+.task-card ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.task-card li {
+  text-align: start;
+}
+
+.task-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+}
+
+.task-buttons button {
+  height: 40px;
+  width: 130px;
+  background-color: var(--call-to-action-color);
+  color: var(--primary-color);
+  text-transform: uppercase;
+  margin: 5px;
+  border: none;
+}

@@ -1,12 +1,14 @@
-import TaskForm from "./components/CreateTaskPage";
-import Tasks from "./components/TaskForm";
-import React, { useEffect, useState } from "react";
-import {tasksTemp} from "./data/TempTasks";
-import { backendURL } from "./data/backendURL";
+import "./styles/Variables.css";
+import "./styles/Main.css";
+import TaskForm from "./components/CreateTaskForm";
+import SortTaskMenu from "./components/SortTaskMenu";
+import AIrequest from "./components/AIrequest";
 
+import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom";
+import React, { useState } from "react";
+import { tasksTemp } from "./data/TempTasks";
 
 function App() {
-  const [formRendered, setformRendered] = useState("");
   const [taskStates, setTasks] = useState(tasksTemp);
 
   useEffect(() => {
@@ -39,12 +41,30 @@ function App() {
   }
 
   return (
-    <div>
-      <h1>628 Group Project - Untitled</h1>
-      <p>{formRendered}</p>
-      <CreateNewTaskButton />
-      <Tasks tasks={taskStates} />
-    </div>
+    <BrowserRouter>
+      <div className="container">
+        <nav className="navbar">
+          <ul>
+            <li>
+              <NavLink to="/" activeClassName="active">
+                Home
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/new_task">Create New Task</NavLink>
+            </li>
+            <li>
+              <NavLink to="/task_bot">Taks Bot</NavLink>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <Routes>
+        <Route path="/" element={<SortTaskMenu tasks={taskStates} />} />
+        <Route path="/new_task" element={<TaskForm updateTasks={addTask} />} />
+        <Route path="/task_bot" element={<AIrequest />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
