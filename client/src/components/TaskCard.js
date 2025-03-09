@@ -12,8 +12,12 @@ function TaskCard({
       <ul>
         <li>Priority: {priority}</li>
         <li>Task Type: {taskType}</li>
-        <li>Due Date: {dueDate} <span>{dueTime}</span></li>
+        <li>
+          Due Date: {dueDate} <span>{dueTime}</span>
+        </li>
         <li>Description: {description}</li>
+        <button>Delete Task</button>
+        <button>Edit Task</button>
       </ul>
     </div>
   );
