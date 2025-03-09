@@ -1,10 +1,16 @@
 import React, { useState } from "react";
 import "../styles/CreateTaskPage.css";
-import { defaultTask, isTaskValid } from "./TaskUtils";
+import { isTaskValid } from "./TaskUtils";
 import { backendURL } from "../data/backendURL";
 
 function TaskForm({ updateTasks }) {
-  const [newTask, setNewTask] = useState({ defaultTask });
+  const [newTask, setNewTask] = useState({ 
+    taskName: "",
+    dueDate: "",
+    dueTime: "23:59",
+    priority: 0,
+    taskType: "Appointment",
+    description: ""});
 
   const handleChange = (event) => {
     const name = event.target.name;     // The updated field name.
@@ -30,8 +36,13 @@ function TaskForm({ updateTasks }) {
         return;
       });
     
-      setNewTask({ defaultTask });
-      // navigate("/");
+      setNewTask({ 
+        taskName: "",
+        dueDate: "",
+        dueTime: "23:59",
+        priority: 0,
+        taskType: "Appointment",
+        description: ""});
     }
   };
 

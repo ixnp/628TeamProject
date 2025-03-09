@@ -1,12 +1,3 @@
-export const defaultTask = {
-    taskName: "",
-    dueDate: "",
-    dueTime: "23:59",
-    priority: 0,
-    taskType: "Appointment",
-    description: "",
-}
-
 export function isTaskValid(newTaskData) {
 
     if(!newTaskData.taskName.trim()) {
