@@ -10,6 +10,7 @@ import { tasksTemp } from "./data/TempTasks";
 
 function App() {
   const [taskStates, setTasks] = useState(tasksTemp);
+
   //Fetches tasks on load
   useEffect(() => {
     getTasksRequest();
@@ -47,8 +48,10 @@ function App() {
 
   const addTask = async (taksData) => {
     let newTask = await postTaskRequest(taksData);
-    setTasks([...taskStates, newTask]);
+    await setTasks([...taskStates, newTask]);
   };
+
+  const updateTask = async (taskData) => {};
 
   const deleteTask = async (id) => {
     await deleteTaskRequest(id);
