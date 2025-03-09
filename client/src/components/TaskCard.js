@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 function TaskCard({ task, deleteTask }) {
   return (
@@ -11,9 +11,9 @@ function TaskCard({ task, deleteTask }) {
         <li>Description: {task.description}</li>
       </ul>
       <div className="task-buttons">
-        <Link className="link" to={`/edit/${task._id}`}>
+        <NavLink to={`/edit/${task._id}`}>
             <button>Edit Task</button>
-        </Link>
+        </NavLink>
         <button onClick={() => deleteTask(task._id)}>Delete Task</button>
       </div>
     </div>

@@ -172,7 +172,7 @@ export default function EditTaskForm() {
         </div>
         <div>
           <br/>
-          <input type="submit" value="Add Task"/>
+          <input type="submit" value="Update Task"/>
         </div>
       </div>
     </form>
