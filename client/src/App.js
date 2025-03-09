@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom";
-import TaskForm from "./components/CreateTaskForm";
+import CreateTaskForm from "./components/CreateTaskForm";
+import EditTaskForm from "./components/EditTaskForm";
 import SortTaskMenu from "./components/SortTaskMenu";
 import AIrequest from "./components/AIrequest";
 import "./styles/Variables.css";
@@ -28,7 +29,8 @@ export default function App() {
       </div>
       <Routes>
         <Route path="/" element={<SortTaskMenu />} />
-        <Route path="/new_task" element={<TaskForm/>} />
+        <Route path="/new_task" element={<CreateTaskForm />} />
+        <Route path="/edit/:id" element={<EditTaskForm />} />
         <Route path="/task_bot" element={<AIrequest />} />
       </Routes>
     </BrowserRouter>

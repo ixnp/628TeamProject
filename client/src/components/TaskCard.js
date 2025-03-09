@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function TaskCard({ task, deleteTask }) {
   return (
     <div className="task-card">
@@ -9,8 +11,10 @@ function TaskCard({ task, deleteTask }) {
         <li>Description: {task.description}</li>
       </ul>
       <div className="task-buttons">
+        <Link className="link" to={`/edit/${task._id}`}>
+            <button>Edit Task</button>
+        </Link>
         <button onClick={() => deleteTask(task._id)}>Delete Task</button>
-        <button>Edit Task</button>
       </div>
     </div>
   );
