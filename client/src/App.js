@@ -5,11 +5,20 @@ import SortTaskMenu from "./components/SortTaskMenu";
 import AIrequest from "./components/AIrequest";
 
 import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { tasksTemp } from "./data/TempTasks";
 
 function App() {
   const [taskStates, setTasks] = useState(tasksTemp);
+
+  useEffect(() => {
+    getTasks();
+  });
+  const getTasks = async () => {
+    let res = await fetch("http://localhost:5050/task");
+    let data = await res.json();
+    setTasks(data);
+  };
 
   const addTask = (newTask) => {
     setTasks([...taskStates, newTask]);
