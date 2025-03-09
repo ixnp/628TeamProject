@@ -1,0 +1,9 @@
+:root {
+  /* colors */
+  --primary-color: #3d8d7a;
+  --secondary-color: #b3d8a8;
+  --higlight-color: #a3d1c6;
+  --call-to-action-color: #fbffe4;
+  /* fonts */
+  --font-family: Arial, sans-serif;
+}

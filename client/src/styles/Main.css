@@ -1,0 +1,39 @@
+/* Adds all content in the body to the middle of page */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, sans-serif;
+  width: 100%;
+}
+li {
+  list-style: none;
+}
+nav {
+  min-width: 1000px;
+}
+nav ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  text-align: center;
+}
+nav li {
+  height: 100%;
+  width: 100%;
+  font-size: 1.5rem;
+  padding: 10px;
+  color: var(--primary-color);
+}
+nav ul li:not(:last-child) {
+  border-right: 2px solid;
+}
+nav li:hover {
+  background-color: var(--higlight-color);
+}
+nav ul li a {
+  text-decoration: none;
+  color: inherit;
+  text-transform: uppercase;
+  padding: 1rem;
+}

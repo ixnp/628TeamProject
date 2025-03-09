@@ -7,7 +7,7 @@ function TaskCard({
   taskType,
 }) {
   return (
-    <div>
+    <div className="task-card">
       <h2>{taskName}</h2>
       <ul>
         <li>Priority: {priority}</li>
@@ -16,9 +16,11 @@ function TaskCard({
           Due Date: {dueDate} <span>{dueTime}</span>
         </li>
         <li>Description: {description}</li>
+      </ul>
+      <div className="task-buttons">
         <button>Delete Task</button>
         <button>Edit Task</button>
-      </ul>
+      </div>
     </div>
   );
 }

@@ -1,0 +1,40 @@
+form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 500px;
+  margin: 5% auto;
+  padding: 20px;
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+  border-radius: 8px;
+  justify-content: center;
+  align-items: center;
+}
+label {
+  font-size: 1.5em;
+}
+input,
+textarea,
+select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--primary-color);
+  border-radius: 5px;
+  font-size: 1.5rem;
+}
+
+textarea {
+  height: 100px;
+}
+
+input[type="submit"] {
+  width: auto;
+  padding: 10px 20px;
+  border: none;
+  background-color: var(--call-to-action-color);
+  color: var(--primary-color);
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  border-radius: 5px;
+}
