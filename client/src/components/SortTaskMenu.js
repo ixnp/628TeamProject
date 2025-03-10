@@ -11,7 +11,7 @@ export default function SortTaskMenu() {
 
   /*
    * Database Functions
-   */ 
+   */
   useEffect(() => {
     async function getTasks() {
       const response = await fetch(`${backendURL}`);
@@ -21,13 +21,13 @@ export default function SortTaskMenu() {
         window.alert(message);
         return;
       }
-  
+
       const tasks = await response.json();
-      setTasks(tasks)
+      setTasks(tasks);
     }
 
     getTasks();
-  
+
     return;
   }, [tasks.length]);
 
@@ -35,7 +35,7 @@ export default function SortTaskMenu() {
     await fetch(`${backendURL}/${id}`, {
       method: "DELETE"
     });
-  
+
     const newTasks = tasks.filter((task) => task._id !== id);
     setTasks(newTasks);
   }
@@ -147,7 +147,11 @@ export default function SortTaskMenu() {
           Alphabetical: Lowest to Highest
         </option>
       </select>
-      <TaskList tasks={sort(tasks)} category={selectedCategory} deleteTask={deleteTask}/>
+      <TaskList
+        tasks={sort(tasks)}
+        category={selectedCategory}
+        deleteTask={deleteTask}
+      />
     </div>
   );
 }

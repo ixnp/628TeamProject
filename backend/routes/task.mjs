@@ -1,6 +1,7 @@
 import express from "express";
 import db from "../db/conn.mjs";
 import { ObjectId } from "mongodb";
+import axios from "axios";
 
 const router = express.Router();
 
@@ -39,15 +40,15 @@ router.post("/", async (req, res) => {
 // This section will help you update a task by id.
 router.patch("/:id", async (req, res) => {
   const query = { _id: new ObjectId(req.params.id) };
-  const updates =  {
+  const updates = {
     $set: {
-        description: req.body.description,
-        dueDate: req.body.dueDate,
-        dueTime: req.body.dueTime,
-        priority: req.body.priority,
-        taskName: req.body.taskName,
-        taskType: req.body.taskType,
-    }
+      description: req.body.description,
+      dueDate: req.body.dueDate,
+      dueTime: req.body.dueTime,
+      priority: req.body.priority,
+      taskName: req.body.taskName,
+      taskType: req.body.taskType,
+    },
   };
 
   let collection = await db.collection("tasks");
@@ -64,6 +65,44 @@ router.delete("/:id", async (req, res) => {
   let result = await collection.deleteOne(query);
 
   res.send(result).status(200);
+});
+
+//ollama
+//Citations: Samchung. (n.d.-a). cs628-examples/Module 01/backend/index.js at main · samchung0117/cs628-examples. GitHub. https://github.com/samchung0117/cs628-examples/blob/main/Module%2001/backend/index.js
+router.post("/api/chat", async (req, res) => {
+  console.log("ollama");
+  const userMessage = req.body.content || "Please provide a message.";
+
+  res.setHeader("Content-Type", "text/event-stream");
+  res.setHeader("Cache-Control", "no-cache");
+  res.setHeader("Connection", "keep-alive");
+  res.flushHeaders();
+  try {
+    const axiosResponse = await axios({
+      method: "post",
+      url: "http://localhost:11434/api/generate",
+      data: {
+        model: "gemma2:2b",
+        prompt: userMessage,
+      },
+      responseType: "stream",
+    });
+
+    axiosResponse.data.on("data", (chunk) => {
+      const chunkStr = chunk.toString();
+      res.write(`data: ${chunkStr}\n\n`);
+    });
+
+    axiosResponse.data.on("end", () => {
+      res.write("data: [DONE]\n\n");
+      res.end();
+    });
+  } catch (error) {
+    console.error("Error during char response streaming:", error);
+    res
+      .status(500)
+      .json({ error: "Failed to process request with Gemma 2:2b" });
+  }
 });
 
 export default router;
