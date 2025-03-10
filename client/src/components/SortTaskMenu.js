@@ -33,7 +33,7 @@ export default function SortTaskMenu() {
 
   async function deleteTask(id) {
     await fetch(`${backendURL}/${id}`, {
-      method: "DELETE",
+      method: "DELETE"
     });
 
     const newTasks = tasks.filter((task) => task._id !== id);

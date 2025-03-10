@@ -60,7 +60,7 @@ function AIrequest() {
       <h1>Ask Task Bot a Question!</h1>
       <form onSubmit={handleSubmit}>
         <input type="text" value={input} onChange={handleChange} />
-        <input type="submit" />
+        <input type="submit" value="Ask Question"/>
       </form>
       <div className="AI-responce">
         <p>{result}</p>
