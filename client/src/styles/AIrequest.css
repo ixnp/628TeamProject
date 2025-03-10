@@ -1,3 +1,10 @@
+.AI-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .AI-responce p {
   max-width: 800px;
 }

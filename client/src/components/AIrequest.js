@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "../styles/AIrequest.css";
 //Citations
 //Samchung. (n.d.). cs628-examples/Module 01/frontend/src/ChatInterface.js at main · samchung0117/cs628-examples. GitHub. https://github.com/samchung0117/cs628-examples/blob/main/Module%2001/frontend/src/ChatInterface.js
 function AIrequest() {
@@ -55,7 +56,7 @@ function AIrequest() {
     }
   };
   return (
-    <>
+    <div className="AI-container">
       <h1>Ask Task Bot a Question!</h1>
       <form onSubmit={handleSubmit}>
         <input type="text" value={input} onChange={handleChange} />
@@ -64,7 +65,7 @@ function AIrequest() {
       <div className="AI-responce">
         <p>{result}</p>
       </div>
-    </>
+    </div>
   );
 }
 export default AIrequest;

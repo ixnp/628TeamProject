@@ -1,27 +1,22 @@
-function TaskCard({
-  _id,
-  description,
-  dueDate,
-  dueTime,
-  priority,
-  taskName,
-  taskType,
-  deleteTask,
-}) {
+import { NavLink } from "react-router-dom";
+
+function TaskCard({ task, deleteTask }) {
   return (
     <div className="task-card">
-      <h2>{taskName}</h2>
+      <h2>{task.taskName}</h2>
       <ul>
-        <li>Priority: {priority}</li>
-        <li>Task Type: {taskType}</li>
+        <li>Priority: {task.priority}</li>
+        <li>Task Type: {task.taskType}</li>
         <li>
-          Due Date: {dueDate} <span>{dueTime}</span>
+          Due Date: {task.dueDate} <span>{task.dueTime}</span>
         </li>
-        <li>Description: {description}</li>
+        <li>Description: {task.description}</li>
       </ul>
       <div className="task-buttons">
-        <button onClick={() => deleteTask(_id)}>Delete Task</button>
-        <button>Edit Task</button>
+        <NavLink to={`/edit/${task._id}`}>
+          <button>Edit Task</button>
+        </NavLink>
+        <button onClick={() => deleteTask(task._id)}>Delete Task</button>
       </div>
     </div>
   );

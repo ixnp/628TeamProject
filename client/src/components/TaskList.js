@@ -9,7 +9,7 @@ export default function TaskList({ tasks, category, deleteTask }) {
     return (
       <>
         {doRenderTask(task, category) && (
-          <TaskCard {...task} deleteTask={deleteTask} />
+          <TaskCard task={task} deleteTask={deleteTask} />
         )}
       </>
     );

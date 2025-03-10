@@ -1,52 +1,44 @@
+import TaskList from "./TaskList";
+import { useState, useEffect } from "react";
+import { getTaskTime } from "./TaskUtils";
+import { backendURL } from "../data/backendURL";
 import "../styles/Tasks.css";
 
-import TaskList from "./TaskList";
-import { useState } from "react";
-import { getTaskTime } from "./TaskUtils";
-
-//Sorts task
-function SortTaskMenu({ tasks, deleteTask }) {
+export default function SortTaskMenu() {
+  const [tasks, setTasks] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [selectedSort, setSelectedSort] = useState("dueDateDescending");
 
-  const updateSelectedCategory = (event) => {
-    setSelectedCategory(event.target.value);
-  };
+  /*
+   * Database Functions
+   */
+  useEffect(() => {
+    async function getTasks() {
+      const response = await fetch(`${backendURL}`);
 
-  const updateSelectedSort = (event) => {
-    setSelectedSort(event.target.value);
-  };
+      if (!response.ok) {
+        const message = `An error occurred: ${response.statusText}`;
+        window.alert(message);
+        return;
+      }
 
-  return (
-    <div className="task-container">
-      <select onChange={updateSelectedCategory}>
-        <option value="All">All Categories</option>
-        <option value="Appointment">Appointment</option>
-        <option value="Event">Event</option>
-        <option value="School">School</option>
-        <option value="Social">Social</option>
-        <option value="Work">Work</option>
-      </select>
-      <select onChange={updateSelectedSort}>
-        <option value="dueDateDescending">Due Sooner</option>
-        <option value="dueDateAscending">Due Later</option>
-        <option value="priorityDescending">Priority: Highest to Lowest</option>
-        <option value="priorityAscending">Priority: Lowest to Highest</option>
-        <option value="alphabetDescending">
-          Alphabetical: Highest to Lowest
-        </option>
-        <option value="alphabetAscending">
-          Alphabetical: Lowest to Highest
-        </option>
-      </select>
+      const tasks = await response.json();
+      setTasks(tasks);
+    }
 
-      <TaskList
-        tasks={sort(tasks)}
-        category={selectedCategory}
-        deleteTask={deleteTask}
-      />
-    </div>
-  );
+    getTasks();
+
+    return;
+  }, [tasks.length]);
+
+  async function deleteTask(id) {
+    await fetch(`${backendURL}/${id}`, {
+      method: "DELETE",
+    });
+
+    const newTasks = tasks.filter((task) => task._id !== id);
+    setTasks(newTasks);
+  }
 
   /*
    * Sort functions.
@@ -73,7 +65,7 @@ function SortTaskMenu({ tasks, deleteTask }) {
   }
 
   function sortDueDateAscending(taskOne, taskTwo) {
-    return getTaskTime(taskOne) < getTaskTime(taskTwo);
+    return getTaskTime(taskOne) > getTaskTime(taskTwo);
   }
 
   function sortPriorityDescending(taskOne, taskTwo) {
@@ -121,6 +113,45 @@ function SortTaskMenu({ tasks, deleteTask }) {
 
     return [...result, ...left.slice(i), ...right.slice(j)];
   }
-}
 
-export default SortTaskMenu;
+  /*
+   * GUI functions.
+   */
+  const updateSelectedCategory = (event) => {
+    setSelectedCategory(event.target.value);
+  };
+
+  const updateSelectedSort = (event) => {
+    setSelectedSort(event.target.value);
+  };
+
+  return (
+    <div className="task-container">
+      <select onChange={updateSelectedCategory}>
+        <option value="All">All Categories</option>
+        <option value="Appointment">Appointment</option>
+        <option value="Event">Event</option>
+        <option value="School">School</option>
+        <option value="Social">Social</option>
+        <option value="Work">Work</option>
+      </select>
+      <select onChange={updateSelectedSort}>
+        <option value="dueDateDescending">Due Sooner</option>
+        <option value="dueDateAscending">Due Later</option>
+        <option value="priorityDescending">Priority: Highest to Lowest</option>
+        <option value="priorityAscending">Priority: Lowest to Highest</option>
+        <option value="alphabetDescending">
+          Alphabetical: Highest to Lowest
+        </option>
+        <option value="alphabetAscending">
+          Alphabetical: Lowest to Highest
+        </option>
+      </select>
+      <TaskList
+        tasks={sort(tasks)}
+        category={selectedCategory}
+        deleteTask={deleteTask}
+      />
+    </div>
+  );
+}
