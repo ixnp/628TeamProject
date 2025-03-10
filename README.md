@@ -8,7 +8,7 @@ Running Task Manager
 6. Open the server in a new tab. Append "/task" to the end of the URL.
 7. Copy the entire URL, task included, to client/src/data/backendURL.js". The file should read as follows:
 
-	export const backendURL = server link
+	export const backendURL = "server link"
 8. In a new terminal, type "cd client".
 9. Run "npm install" and "npm start".
 
