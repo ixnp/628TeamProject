@@ -1,55 +1,81 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router";
 import { isTaskValid } from "./TaskUtils";
 import { backendURL } from "../data/backendURL";
 import "../styles/Form.css";
-
-export default function CreateTaskPage() {
-  const navigate = useNavigate()
-  const [newTask, setNewTask] = useState({ 
-    taskName: "",
-    dueDate: "",
-    dueTime: "23:59",
-    priority: 0,
-    taskType: "Appointment",
-    description: ""});
-
-  const handleChange = (event) => {
-    const name = event.target.name; // The updated field name.
-    const value = event.target.value; // The updated field's new value.
-    setNewTask((values) => ({ ...values, [name]: value }));
-  };
-
-  async function handleSubmit(event) {
-    event.preventDefault();
-    if(isTaskValid(newTask)) {  
-      await fetch(`${backendURL}`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(newTask),
-      })
-      .catch(error => {
-        window.alert(error);
-        return;
-      });
-    
-      setNewTask({ 
+ 
+export default function EditTaskForm() {
+    const params = useParams();
+    const navigate = useNavigate();
+    const [task, setTask] = useState({ 
         taskName: "",
         dueDate: "",
         dueTime: "23:59",
         priority: 0,
         taskType: "Appointment",
-        description: ""});
-        navigate("/")
+        description: ""}
+    );
+
+    function handleChange(event) {
+        const name = event.target.name;     // The updated field name.
+        const value = event.target.value;   // The updated field's new value.
+        setTask((values) => ({ ...values, [name]: value }));
+    };
+ 
+  useEffect(() => {
+    async function fetchData() {
+      const response = await fetch(`${backendURL}/${params.id}`);
+  
+      if (!response.ok) {
+        const message = `An error has occurred: ${response.statusText}`;
+        window.alert(message);
+        return;
+      }
+  
+      const task = await response.json();
+      if (!task) {
+        window.alert(`Task not found.`);
+        navigate("/");
+        return;
+      }
+      setTask(task);
     }
-  };
+  
+    fetchData();
+    return;
+  }, [params.id, navigate]);
+
+    async function handleSubmit(event) {
+        event.preventDefault();
+        if(isTaskValid(task)) {  
+            await fetch(`${backendURL}/${params.id}`, {
+            method: "PATCH",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(task),
+            })
+            .catch(error => {
+            window.alert(error);
+            return;
+            });
+        
+            setTask({ 
+            taskName: "",
+            dueDate: "",
+            dueTime: "23:59",
+            priority: 0,
+            taskType: "Appointment",
+            description: ""});
+            navigate("/");
+        }
+    };
+
 
   return (
     <form onSubmit={handleSubmit}>
       <div class="form-global">
-        <h1>Create New Task</h1>
+        <h1>Edit Task</h1>
         <div class="wrapper">
           <div class="name-label">
             <label>Task Name:</label>
@@ -60,7 +86,7 @@ export default function CreateTaskPage() {
               className="create-task-input"
               type="text"
               name="taskName"
-              value={newTask.taskName || ""}
+              value={task.taskName || ""}
               onChange={handleChange}
             />
           </div>
@@ -74,7 +100,7 @@ export default function CreateTaskPage() {
               className="create-task-input"
               type="date"
               name="dueDate"
-              value={newTask.dueDate || ""}
+              value={task.dueDate || ""}
               onChange={handleChange}
             />
           </div>
@@ -88,7 +114,7 @@ export default function CreateTaskPage() {
               className="create-task-input"
               type="time"
               name="dueTime"
-              value={newTask.dueTime || ""}
+              value={task.dueTime || ""}
               onChange={handleChange}
             />
           </div>
@@ -105,7 +131,7 @@ export default function CreateTaskPage() {
               min="1"
               max="5"
               step="1"
-              value={newTask.priority || ""}
+              value={task.priority || ""}
               onChange={handleChange}
             />
           </div>
@@ -119,7 +145,7 @@ export default function CreateTaskPage() {
               className="create-task-select"
               type="text"
               name="taskType"
-              value={newTask.taskType || "Appointment"}
+              value={task.taskType || "Appointment"}
               onChange={handleChange}
             >
               <option value="Appointment">Appointment</option>
@@ -139,14 +165,14 @@ export default function CreateTaskPage() {
               className="create-task-input"
               type="text"
               name="description"
-              value={newTask.description || ""}
+              value={task.description || ""}
               onChange={handleChange}
             />
           </div>
         </div>
         <div>
           <br/>
-          <input type="submit" value="Add Task"/>
+          <input type="submit" value="Update Task"/>
         </div>
       </div>
     </form>

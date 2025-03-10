@@ -1,20 +1,13 @@
-import "./styles/Variables.css";
-import "./styles/Main.css";
-import TaskForm from "./components/CreateTaskForm";
+import React from "react";
+import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom";
+import CreateTaskForm from "./components/CreateTaskForm";
+import EditTaskForm from "./components/EditTaskForm";
 import SortTaskMenu from "./components/SortTaskMenu";
 import AIrequest from "./components/AIrequest";
+import "./styles/Variables.css";
+import "./styles/Main.css";
 
-import { BrowserRouter, Routes, Route, NavLink } from "react-router-dom";
-import React, { useState } from "react";
-import { tasksTemp } from "./data/TempTasks";
-
-function App() {
-  const [taskStates, setTasks] = useState(tasksTemp);
-
-  const addTask = (newTask) => {
-    setTasks([...taskStates, newTask]);
-  };
-
+export default function App() {
   return (
     <BrowserRouter>
       <div className="container">
@@ -29,18 +22,17 @@ function App() {
               <NavLink to="/new_task">Create New Task</NavLink>
             </li>
             <li>
-              <NavLink to="/task_bot">Taks Bot</NavLink>
+              <NavLink to="/task_bot">Task Bot</NavLink>
             </li>
           </ul>
         </nav>
       </div>
       <Routes>
-        <Route path="/" element={<SortTaskMenu tasks={taskStates} />} />
-        <Route path="/new_task" element={<TaskForm updateTasks={addTask} />} />
+        <Route path="/" element={<SortTaskMenu />} />
+        <Route path="/new_task" element={<CreateTaskForm />} />
+        <Route path="/edit/:id" element={<EditTaskForm />} />
         <Route path="/task_bot" element={<AIrequest />} />
       </Routes>
     </BrowserRouter>
   );
 }
-
-export default App;

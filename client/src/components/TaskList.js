@@ -1,6 +1,6 @@
 import TaskCard from "./TaskCard";
 
-export default function TaskList({tasks, category}) { 
+export default function TaskList({tasks, category, deleteTask}) { 
     function doRenderTask(task, category) {
         return (category === task.taskType) || (category === "All")
     }
@@ -9,7 +9,7 @@ export default function TaskList({tasks, category}) {
         tasks.map((task) => {
             return ( 
                 <>  
-                    {(doRenderTask(task, category) && (<TaskCard {...task} />))}
+                    {(doRenderTask(task, category) && (<TaskCard task={task} deleteTask={deleteTask}/>))}
                 </>
             )
         })
