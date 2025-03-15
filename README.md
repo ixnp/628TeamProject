@@ -16,10 +16,16 @@ Running Ollama (For TaskBot only)
 
 In a terminal enter the following: 
 1. Install Ollama 
+```bash
 curl -fsSL https://ollama.com/install.sh | sh
- 
-2. Start the Ollama service 
-Ollama serve 
+```
+
+2. Start the Ollama service
+```bash
+ollama serve
+```
  
 3. Pull LLM
-Ollama pull gemma2:2b
+```bash
+ollama pull gemma2:2b
+```
